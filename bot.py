@@ -25,20 +25,26 @@ if __name__ == "__main__" :
     #While loop for continuous cycle
     while True :
         # cleaning user input
-        processed_text = get_clean_input()
+        clear_text = get_clean_input()
 
-        if processed_text == "":
+        if clear_text == "":
             print("Bot: System detected an empty input. Please type a valid query.\n")
             continue  # Skips everything else below and restarts the loop immediately
 
         # Check for the kill command
-        if processed_text == "exit" :
+        if clear_text == "exit" :
             print("Shutting down core engine down safely. Goodbye.")
             break
             #break instantly stops the loop and exits the script cleanly if kill command is given
         
         #Checking the databse for answer or gives fallback answer if nothing matches
-        system_reply = process_intent(processed_text)
-        
+        system_reply = process_intent(clear_text)
+
+        #Handling the Hybrid AI Route path professionally
+        if system_reply == "ROUTE_TO_LLM" :
+            print("Bot: [SYSTEM NOTICE] Intent unmapped in local rule base.")
+            print(f"      -> Routing query '{clear_text}' safely to LLM cloud gateway....\n")
+
         #OUTPUT
-        print(f"Bot:{system_reply}\n")
+        else :
+            print(f"Bot:{system_reply}\n")
