@@ -27,6 +27,10 @@ if __name__ == "__main__" :
         # cleaning user input
         processed_text = get_clean_input()
 
+        if processed_text == "":
+            print("Bot: System detected an empty input. Please type a valid query.\n")
+            continue  # Skips everything else below and restarts the loop immediately
+
         # Check for the kill command
         if processed_text == "exit" :
             print("Shutting down core engine down safely. Goodbye.")
