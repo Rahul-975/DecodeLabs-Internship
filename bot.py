@@ -17,7 +17,7 @@ def process_intent(user_input):
     return response
 if __name__ == "__main__" :
 
-    print("--- Sanitization Engine Active ---")
+    print("--- Intent engine and Information Base active ---")
 
     processed_text = get_clean_input()
 
